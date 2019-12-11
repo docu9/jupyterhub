@@ -94,4 +94,7 @@ EXPOSE 8000
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 LABEL org.jupyter.service="jupyterhub"
 
+RUN python3 -m pip install jupyter_client 
+COPY dev-requirements.txt  requirements.txt  /src/jupyterhub/
+RUN python3 -m pip install -r /src/jupyterhub/dev-requirements.txt
 CMD ["jupyterhub"]
